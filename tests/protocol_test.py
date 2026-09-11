@@ -53,6 +53,10 @@ class _Client:
 
 def test_models() -> None:
     print("=== Models protocol ===")
+    check(
+        "gpt-6-astra" in oauth.CODEX_FALLBACK_MODELS,
+        "latest configured fallback model is available offline",
+    )
     client = _Client(
         _Response(
             200,
