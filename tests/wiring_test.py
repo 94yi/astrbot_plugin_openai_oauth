@@ -10,9 +10,9 @@ import sys
 from types import SimpleNamespace
 from unittest import mock
 
-REPO_ROOT = os.path.abspath(
-    os.path.join(os.path.dirname(__file__), "..", "..", "AstrBot")
-)
+from repo_root import configure_test_imports
+
+REPO_ROOT = str(configure_test_imports())
 sys.path.insert(0, REPO_ROOT)
 os.chdir(REPO_ROOT)
 
