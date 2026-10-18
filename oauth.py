@@ -46,6 +46,7 @@ _CHATGPT_ACCOUNT_ID_CLAIM = "https://api.openai.com/auth.chatgpt_account_id"
 # Models reachable through a ChatGPT subscription. The live catalog comes from
 # GET /codex/models; this list is the offline fallback for the WebUI dropdown.
 CODEX_FALLBACK_MODELS = [
+    "gpt-6-astra",
     "gpt-5.6-sol",
     "gpt-5.6-terra",
     "gpt-5.6-luna",

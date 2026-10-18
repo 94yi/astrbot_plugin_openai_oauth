@@ -8,18 +8,18 @@ import json
 import os
 import sys
 import unittest
-from pathlib import Path
 from unittest import mock
 
-PLUGIN_ROOT = Path(__file__).resolve().parents[1]
-ASTRBOT_ROOT = PLUGIN_ROOT.parent / "AstrBot"
-sys.path[:0] = [str(ASTRBOT_ROOT), str(PLUGIN_ROOT.parent)]
+from repo_root import configure_test_imports
+
+ASTRBOT_ROOT = configure_test_imports()
+sys.path.insert(0, str(ASTRBOT_ROOT))
 os.chdir(ASTRBOT_ROOT)
 
 import httpx
 from openai import APIError, AsyncOpenAI
 
-module = importlib.import_module(f"{PLUGIN_ROOT.name}.main")
+module = importlib.import_module("data.plugins.astrbot_plugin_openai_oauth.main")
 
 OVERLOAD = {
     "error": {

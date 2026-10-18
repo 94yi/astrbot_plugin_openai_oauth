@@ -7,9 +7,9 @@ import importlib
 import os
 import sys
 
-REPO_ROOT = os.path.abspath(
-    os.path.join(os.path.dirname(__file__), "..", "..", "AstrBot")
-)
+from repo_root import configure_test_imports
+
+REPO_ROOT = str(configure_test_imports())
 sys.path.insert(0, REPO_ROOT)
 os.chdir(REPO_ROOT)
 
@@ -53,6 +53,10 @@ class _Client:
 
 def test_models() -> None:
     print("=== Models protocol ===")
+    check(
+        "gpt-6-astra" in oauth.CODEX_FALLBACK_MODELS,
+        "latest configured fallback model is available offline",
+    )
     client = _Client(
         _Response(
             200,
